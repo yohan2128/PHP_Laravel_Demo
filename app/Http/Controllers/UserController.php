@@ -19,12 +19,12 @@ class UserController extends Controller
         $user = User::create($inreq);
         auth()->guard()->login($user);
 
-        return redirect('/');
+        return redirect('/home');
     }
 
     public function logout(){
         auth()->guard()->logout();
-        return redirect('/');
+        return redirect('/home');
     }
 
     public function login(Request $request){
@@ -37,6 +37,6 @@ class UserController extends Controller
             $request->session()->regenerate();
         }
 
-        return redirect('/');
+        return redirect('/home');
     }
 }

@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Test Laravel</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <style>
         input {
             border: 1px solid black;
-            margin: 5px;
         }
 
         div {
@@ -63,20 +65,21 @@
             @endforeach
         </div>
     @else
-        <div name="register-content">
+        <div name="register-content" class="container m-2">
             <h1>Register!</h1>
+            
             <form action="/register" method="POST">
                 @csrf
-                <label for="name">Name:</label>
-                <input type="text" placeholder="name" name="name" id="name"><br>
-                <label for="email">Email:</label>
-                <input type="email" placeholder="email" name="email" id="email"><br>
-                <label for="password">Password:</label>
-                <input type="password" placeholder="password" name="password" id="password"><br>
-                <button type="submit">Register</button>
+                <label for="name" class="form-label">Name:</label>
+                <input type="text" placeholder="name" name="name" id="name" class="form-control">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" placeholder="email" name="email" id="email" class="form-control">
+                <label for="password"class="form-label">Password:</label>
+                <input type="password" placeholder="password" name="password" id="password" class="form-control">
+                <button type="submit" class="btn btn-primary mt-2">Register</button>
             </form>
         </div>
-        <div name="login-content">
+        <div name="login-content" class="container m-2">
             <h1>Log In!</h1>
             <form action="/login" method="POST">
                 @csrf
@@ -88,7 +91,8 @@
             </form>
         </div>
     @endauth
-
+    <!-- Bootstrap JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

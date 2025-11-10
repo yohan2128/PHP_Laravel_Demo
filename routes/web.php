@@ -7,6 +7,17 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
+    return view('welcome');
+});
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+Route::get('/cssTest', function () {
+    return view('cssTest');
+})->name('cssTest');
+
+//region Laravel CRUD tutorial example
+Route::get('/home', function () {
     $posts = [];
     if (auth('web')->check()) {
         $posts = auth('web')->user()->userPosts()->latest()->get();
@@ -14,12 +25,6 @@ Route::get('/', function () {
     //$posts = Post::all();
     return view('home', ['posts' => $posts]);
 });
-
-Route::get('/welcome', function () {
-    return view('welcome',);
-});
-
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 //USER Register, logIn, logOut
 Route::post('/register', [UserController::class, 'register']);
@@ -34,3 +39,4 @@ Route::put('/edit-post/{post}', [PostController::class, 'editPost']);
 Route::get('/cancel-edit', [PostController::class, 'cancelEdit']);
 
 Route::delete('/delete-post/{post}', [PostController::class, 'deletePost']);
+//endregion Laravel CRUD tutorial example
