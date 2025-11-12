@@ -20,26 +20,26 @@ class PostController extends Controller
 
         Post::create($inreq);
 
-        return redirect('/home');
+        return redirect('/CRUD');
     }
 
     public function showEditPost(Post $post)
     {
         if (is_null(auth()->user()) || auth()->user()->id !== $post['user_id']) {
-            return redirect('/home');
+            return redirect('/CRUD');
         }
-        return view('edit-post', ['post' => $post]);
+        return view('CRUD.edit-post', ['post' => $post]);
     }
 
     public function cancelEdit()
     {
-        return redirect('/home');
+        return redirect('/CRUD');
     }
 
     public function editPost(Post $post, Request $request)
     {
         if (auth()->user()->id !== $post['user_id']) {
-            return redirect('/home');
+            return redirect('/CRUD');
         }
 
         $inreq = $request->validate([
@@ -52,7 +52,7 @@ class PostController extends Controller
 
         $post->update($inreq);
 
-        return redirect('/home');
+        return redirect('/CRUD');
     }
 
     public function deletePost(Post $post)
@@ -60,6 +60,6 @@ class PostController extends Controller
         if (auth()->user()->id === $post['user_id']) {
             $post->delete();
         }
-        return redirect('/home');
+        return redirect('/CRUD');
     }
 }

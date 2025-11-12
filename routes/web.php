@@ -10,20 +10,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+Route::get('/userPortal', function () {
+    return view('userPortal.index');
+})->name('userPortal.index');
 
-Route::get('/cssTest', function () {
-    return view('cssTest');
-})->name('cssTest');
+// Route to display the About page in the user portal
+Route::get('/userPortal/about', function () {
+    return view('userPortal.about');
+})->name('userPortal.about');
 
 //region Laravel CRUD tutorial example
-Route::get('/home', function () {
+Route::get('/CRUD', function () {
     $posts = [];
     if (auth('web')->check()) {
         $posts = auth('web')->user()->userPosts()->latest()->get();
     }
     //$posts = Post::all();
-    return view('home', ['posts' => $posts]);
+    return view('CRUD.index', ['posts' => $posts]);
 });
 
 //USER Register, logIn, logOut

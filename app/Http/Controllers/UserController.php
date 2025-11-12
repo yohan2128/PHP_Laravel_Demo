@@ -13,18 +13,27 @@ class UserController extends Controller
             'name' => ['required', 'min:3', 'max:5', Rule::unique('users', 'name')],
             'email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'min:3', 'max:5']
+        ], [
+            'name.unique' => 'This username is already taken.',
+            'email.unique' => 'This email is already registered.'
         ]);
 
         $inreq['password'] = bcrypt($inreq['password']);
         $user = User::create($inreq);
-        auth()->guard()->login($user);
+        auth()->login($user);
 
-        return redirect('/home');
+        return redirect('/CRUD');
     }
 
-    public function logout(){
-        auth()->guard()->logout();
-        return redirect('/home');
+    public function logout(Request $request){
+        // Log the user out of the application
+        auth()->logout();
+
+        // Invalidate the session and regenerate the CSRF token to prevent session fixation
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect('/CRUD');
     }
 
     public function login(Request $request){
@@ -33,10 +42,10 @@ class UserController extends Controller
             'loginPassword' => 'required'
         ]);
 
-        if(auth()->guard()->attempt(['name' => $inreq['loginName'], 'password' => $inreq['loginPassword']])){
+        if(auth()->attempt(['name' => $inreq['loginName'], 'password' => $inreq['loginPassword']])){
             $request->session()->regenerate();
         }
 
-        return redirect('/home');
+        return redirect('/CRUD');
     }
 }
