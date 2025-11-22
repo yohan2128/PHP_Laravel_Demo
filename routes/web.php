@@ -10,6 +10,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//region Route to display the main page of the user portal
 Route::get('/userPortal', function () {
     return view('userPortal.index');
 })->name('userPortal.index');
@@ -17,7 +18,24 @@ Route::get('/userPortal', function () {
 // Route to display the About page in the user portal
 Route::get('/userPortal/about', function () {
     return view('userPortal.about');
-})->name('userPortal.about');
+})->name('userPortal.showAbout');
+
+// Route to display the Sign Up page in the user portal
+Route::get('/userPortal/signUp', function () {
+    return view('userPortal.signUp');
+})->name('userPortal.showSignUp');
+
+// Route to handle the Sign Up form submission
+Route::post('/signUp', [UserController::class, 'register']); // placeholder for sign-up logic
+
+// Route to display the Sign In page in the user portal
+Route::get('/userPortal/signIn', function () {
+    return view('userPortal.signIn');
+})->name('userPortal.showSignIn');
+
+// Route to handle the Sign In form submission
+Route::post('/signIn', [UserController::class, 'login']); // placeholder for sign-in logic
+//endregion Route to display the main page of the user portal
 
 //region Laravel CRUD tutorial example
 Route::get('/CRUD', function () {
