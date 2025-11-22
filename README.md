@@ -1,10 +1,11 @@
 
-# TestLaravel CRUD Demo
+# PHP_Laravel_Demo
 
 This project is a personal learning playground for PHP, Laravel, Git, GitHub, and PostgreSQL. It demonstrates a simple CRUD (Create, Read, Update, Delete) application with user authentication and post management, using modern Laravel features and best practices.
 
 ## Features
 
+** CRUD Demo **
 - User registration and login (with validation and error handling)
 - Create, edit, and delete posts
 - Authentication using Laravel's built-in system
