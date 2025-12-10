@@ -1,11 +1,11 @@
 <x-layout>
     <h1 class="font-semibold text-3xl text-gray-800 leading-tight" > Sign In to your Account</h1>
     <div class="mt-6 p-4 bg-white rounded-lg shadow-md">
-        <form method="POST" action="/signIn">
+        <form method="POST" action="{{ route('userHub.signInAuth') }}">
             @csrf
             <div class="mb-4">
-                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                <input type="email" id="email" name="email" class="w-full p-2 border border-gray-300 rounded-lg" required>
+                <label for="emailUser" class="block text-gray-700 font-medium mb-2">Email or User</label>
+                <input type="emailUser" id="emailUser" name="emailUser" class="w-full p-2 border border-gray-300 rounded-lg" required>
             </div>
             <div class="mb-4">
                 <label for="password" class="block text-gray-700 font-medium mb-2">Password</label>

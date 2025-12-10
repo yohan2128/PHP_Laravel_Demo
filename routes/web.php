@@ -4,37 +4,42 @@ use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\userHub\AuthController;
+use Illuminate\Container\Attributes\Auth;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-//region Route to display the main page of the user portal
-Route::get('/userPortal', function () {
-    return view('userPortal.index');
-})->name('userPortal.index');
+//region Route to display the main page of the user hub
+Route::get('/userHub', function () {
+    return view('userHub.index');
+})->name('userHub.index');
 
-// Route to display the About page in the user portal
-Route::get('/userPortal/about', function () {
-    return view('userPortal.about');
-})->name('userPortal.showAbout');
+// Route to display the About page in the user hub
+Route::get('/userHub/about', function () {
+    return view('userHub.about');
+})->name('userHub.showAbout');
 
-// Route to display the Sign Up page in the user portal
-Route::get('/userPortal/signUp', function () {
-    return view('userPortal.signUp');
-})->name('userPortal.showSignUp');
+// Route to display the Sign Up page in the user hub
+Route::get('/userHub/signUp', function () {
+    return view('userHub.signUp');
+})->name('userHub.showSignUp');
 
 // Route to handle the Sign Up form submission
-Route::post('/signUp', [UserController::class, 'register']); // placeholder for sign-up logic
+Route::post('/signUp', [AuthController::class, 'signUp']); // placeholder for sign-up logic
 
 // Route to display the Sign In page in the user portal
-Route::get('/userPortal/signIn', function () {
-    return view('userPortal.signIn');
-})->name('userPortal.showSignIn');
+Route::get('/userHub/signIn', function () {
+    return view('userHub.signIn');
+})->name('userHub.showSignIn');
 
 // Route to handle the Sign In form submission
-Route::post('/signIn', [UserController::class, 'login']); // placeholder for sign-in logic
+Route::post('/userHub/signIn/Auth', [AuthController::class, 'signIn'])->name('userHub.signInAuth'); // sign-in logic
+
+// Route to handle the Sign Out action
+Route::post('/signOut', [AuthController::class, 'signOut'])->name('userHub.signOut'); // sign-out logic
+
 //endregion Route to display the main page of the user portal
 
 //region Laravel CRUD tutorial example
