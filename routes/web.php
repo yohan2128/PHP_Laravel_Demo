@@ -7,17 +7,8 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('CRUD.index');
 });
-
-Route::get('/userPortal', function () {
-    return view('userPortal.index');
-})->name('userPortal.index');
-
-// Route to display the About page in the user portal
-Route::get('/userPortal/about', function () {
-    return view('userPortal.about');
-})->name('userPortal.about');
 
 //region Laravel CRUD tutorial example
 Route::get('/CRUD', function () {

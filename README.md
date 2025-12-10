@@ -28,8 +28,8 @@ This project is a personal learning playground for PHP, Laravel, Git, GitHub, an
 
 1. Clone this repository:
 	```bash
-	git clone https://github.com/yohan2128/TestLaravel.git
-	cd TestLaravel/testApp
+	git clone https://github.com/yohan2128/PHP_Laravel_Demo.git
+	cd PHP_Laravel_Demo
 	```
 2. Install dependencies:
 	```bash
@@ -52,6 +52,10 @@ This project is a personal learning playground for PHP, Laravel, Git, GitHub, an
 5. Start the development server:
 	```bash
 	php artisan serve
+	```
+6. Start vite
+	```bash
+	npm run dev
 	```
 
 ## Usage
